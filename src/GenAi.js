@@ -1,3 +1,5 @@
+import {getAnswerFromQuestion} from "./openaihelper"
+
 function GenAi() {
 
   /**
@@ -6,6 +8,7 @@ function GenAi() {
   function callAi() {
     const input = document.querySelector('#gen-ai-input');
     console.log('We should make a call to the API with input ', input.value);
+    return getAnswerFromQuestion(input.value)
   }
 
   /**
