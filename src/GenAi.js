@@ -41,14 +41,16 @@ function GenAi() {
 
   return (
     <div class="gen-ai">
-      <div>
-        <textarea id="gen-ai-input" name="gen-ai-input" style={{height: "80px", width: "320px"}}></textarea>
+      <div class="gen-ai-container">
+        <div class="gen-ai-textarea-container">
+          <textarea class="gen-ai-input drop-shadow-sm" id="gen-ai-input" name="gen-ai-input" placeholder="Enter a prompt to update the UI"></textarea>
+        </div>
         <button onClick={callAi}>Go!</button>
       </div>
-      <div>
-        <textarea type="text" id="gen-ai-output" name="gen-ai-output" style={{height: "80px", width: "320px"}}></textarea>
+      <div class="gen-ai-container">
+        <textarea class="gen-ai-output" type="text" id="gen-ai-output" name="gen-ai-output" placeholder="Wait for your CSS to get populated here..."></textarea>
         <button onClick={manuallyUpdateStyles}>Update CSS</button>
-        </div>
+      </div>
     </div>
   );
 }
