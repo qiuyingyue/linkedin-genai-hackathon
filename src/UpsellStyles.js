@@ -43,7 +43,7 @@ function UpsellStyles() {
           width: 20px;
         }
   
-        p {
+        .text {
           font-family: sans-serif;
           color: #000000e6;
           flex-grow: 1;
