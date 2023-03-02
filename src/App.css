@@ -43,6 +43,32 @@
   justify-content: center;
 }
 
+/* Loading and Spinner */
+.App-container.loading::after {
+  content: '';
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  right: 0;
+  position: absolute;
+  background-color: rgba(0,0,0,0.6);
+}
+.App-container ~ .spinner {
+  display: none;
+}
+.App-container.loading ~ .spinner {
+  display: initial;
+}
+
+.spinner {
+  position: absolute;
+  top: 45%;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  color: white;
+}
+
 /* UpsellMarkup */
 
 .upsell-markup-container {

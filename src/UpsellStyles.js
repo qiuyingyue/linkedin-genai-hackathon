@@ -15,18 +15,13 @@ function UpsellStyles() {
         }
   
         .title {
+          order: 1;
           margin-bottom: 16px;
           font-family: sans-serif;
           font-weight: 600; 
           text-align: center; 
           font-size: 16px;
           color: #000000e6;
-        }
-  
-        .promo-bottom-sheet__card-action {
-          display: flex;
-          align-items: center;
-          margin-bottom: 20px;
         }
   
         .icon {
@@ -43,7 +38,7 @@ function UpsellStyles() {
           width: 20px;
         }
   
-        p {
+        .text {
           font-family: sans-serif;
           color: #000000e6;
           flex-grow: 1;
@@ -73,11 +68,19 @@ function UpsellStyles() {
           min-width: 110px;
         }
 
+        .open-app-button-container {
+          order: 2;
+        }
+
         .open-app-button {
           box-shadow: 0 0 0 1px #00000000;
           background-color: #0a66c2;
           color: #ffffff;
           border: 0;
+        }
+
+        .continue-app-button-container {
+          order: 3;
         }
   
         .continue-button {

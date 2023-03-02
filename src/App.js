@@ -3,6 +3,7 @@ import './App.css';
 import UpsellMarkup from './UpsellMarkup';
 import UpsellStyles from './UpsellStyles';
 import Options from './Options';
+import Spinner from './Spinner';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <UpsellMarkup/>
         <Options/>
       </div>
+      {/* Show when loading */}
+      <Spinner/>
     </div>
   );
 }
