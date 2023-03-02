@@ -11,7 +11,8 @@ function GenAi() {
     console.log('We should make a call to the API with input ', input.value);
 
     const existingStyle = document.querySelector('#upsell-styles').innerHTML
-    const question = "Here's the current style: " + existingStyle + "\n" + input.value
+    const question = "Here's the code for the current style: " + existingStyle + "\n" + input.value
+    + " and send me the new code?"
     return getCodeFromQuestion(question)
     .then(responseValue => {
       document.getElementById('gen-ai-output').value=responseValue
