@@ -18,7 +18,7 @@ function Options() {
         <li>Please update the <strong>buttons</strong> to be a <strong>darker</strong> color.</li>
         <li>Can you make the <strong>buttons</strong> less <strong>rounded</strong>?</li>
       </ul>
-      <p><em>Or get more creative, like</em></p>
+      <p><em>Or get more creative...</em></p>
       <ul>
         <li>Can you update to a style <strong>Gen Z</strong> would like?</li>
         <li>Update the style so it looks like <strong>Reddit</strong></li>

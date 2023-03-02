@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
-const organizationId = "org-96dopwo0NE7xVygt5gBE0uKG" // Switch to your own one
+let organizationId = "" // Switch to your own one
 let secretKey = "" // Switch to your own one
 
 const url = "https://api.openai.com/v1/completions";
@@ -25,8 +25,8 @@ const getAnswerFromQuestion = async (question) => {
     secretKey = secretKeyEl.value || secretKey;
 
     const organizationIdEl = document.querySelector('#organization-id-input');
-    console.log('organization id is ', secretKeyEl.value);
-    secretKey = organizationIdEl.value || organizationId;
+    console.log('organization id is ', organizationIdEl.value);
+    organizationId = organizationIdEl.value || organizationId;
 
     const headers = new Headers({
         'OpenAI-Organization': organizationId,
