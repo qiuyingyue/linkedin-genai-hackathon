@@ -74,3 +74,9 @@
 .options-option label {
   margin-bottom: 4px;
 }
+
+/* Gen AI */
+.gen-ai {
+  display: flex;
+  flex-direction: column;
+}
