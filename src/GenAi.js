@@ -12,7 +12,7 @@ function GenAi() {
 
     const existingStyle = document.querySelector('#upsell-styles').innerHTML
     const question = "Here's the code for the current style: " + existingStyle + "\n" + input.value
-    + " and send me the new code?"
+    + ". Please send me the full new code enclosed between \"///\" and \"###\"?"
     return getCodeFromQuestion(question)
     .then(responseValue => {
       document.getElementById('gen-ai-output').value=responseValue

@@ -1,10 +1,10 @@
 import { Configuration, OpenAIApi } from "openai";
 const organizationId = "org-96dopwo0NE7xVygt5gBE0uKG" // Switch to your own one
-const secretKey = "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" // Switch to your own one
+const secretKey = "" // Switch to your own one
 
 const url = "https://api.openai.com/v1/completions";
 const model = "text-davinci-003" // Can use getOpenAiModels to list avaliable modals
-const max_tokens = 800 // The size limit for the response. Shorter is faster but the code may be incomplete
+const max_tokens = 800 // The size limit for the response. Shorter is faster and cheaper but the code may be incomplete
 const temperature = 1 // from 0-2. closer to 0 is more deterministic; closer to 2 is more random
 
 export const getCodeFromQuestion = async (question) =>{
@@ -77,9 +77,10 @@ const getAnswerFromQuestion = async (question) => {
 }
 
 function extractCode(text) {
-    const indexOfNewline =  text.indexOf('.')
-    console.log(indexOfNewline)
-    return text.substring(indexOfNewline)
+    const indexOfStart =  text.indexOf('///')
+    const indexOfEnd =  text.indexOf('###')
+    
+    return text.substring(indexOfStart + 3, indexOfEnd)
 }
 
 const configuration = new Configuration({
