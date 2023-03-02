@@ -1,38 +1,32 @@
 import { Configuration, OpenAIApi } from "openai";
 const organizationId = "org-96dopwo0NE7xVygt5gBE0uKG" // Switch to your own one
-const secretKey = "" // Switch to your own one
+const secretKey = "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" // Switch to your own one
 
 const url = "https://api.openai.com/v1/completions";
 const model = "text-davinci-003" //"text-davinci-002-render-sha"
-const max_tokens = 100
+const max_tokens = 1000
 const temperature = 1 // from 0-2
-const configuration = new Configuration({
-    organization: organizationId,
-    apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+// const configuration = new Configuration({
+//     organization: organizationId,
+//     apiKey: process.env.OPENAI_API_KEY,
+// });
+// const openai = new OpenAIApi(configuration);
 
-export const getOpenAiModels = async () =>  {
-    const response = await openai.listEngines();
-    return response
-}
+// export const getOpenAiModels = async () =>  {
+//     const response = await openai.listEngines();
+//     return response
+// }
 
-// Use node.JS library
-export const getAnswerFromQuestionV2 = async (question) =>{
-    const createAnswerRequest = {
-        model: model, 
-        question: question, //"Can you provide sample css code of red button?",
-        temperature: temperature,
-        max_tokens: max_tokens};
-    const response = openai.createAnswer(createAnswerRequest)
-    return response
-    // if (response.status = 200) {
-    //     console.log(response.data)
-    //     return response.data
-    // } else {
-    //     return "Error fetching result: " + response.statusText
-    // }
-}
+// // Use node.JS library, not ready
+// export const getAnswerFromQuestionV2 = async (question) =>{
+//     const createAnswerRequest = {
+//         model: model, 
+//         question: question, //"Can you provide sample css code of red button?",
+//         temperature: temperature,
+//         max_tokens: max_tokens};
+//     const response = openai.createAnswer(createAnswerRequest)
+//     return response
+// }
 
 // make http request
 export const getAnswerFromQuestion = async (question) => {
@@ -111,5 +105,5 @@ export const getCodeFromQuestion = async (question) =>{
 function extractCode(text) {
     const indexOfNewline =  text.indexOf('.')
     console.log(indexOfNewline)
-    return text.substring(indexOfNewline + 1)
+    return text.substring(indexOfNewline)
 }
