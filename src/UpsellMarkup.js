@@ -4,6 +4,7 @@ function UpsellMarkup() {
       <div class="promo-bottom-sheet">
         <div class="container">
           <h3 class="title">LinkedIn is better on the app</h3>
+          <h4 class="subtitle">Access your professional network anytime, anywhere</h4>
           <div class="button-container open-app-button-container">
             <icon class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" height="27" width="27" viewBox="0 0 27 27" focusable="false" class="svg">
