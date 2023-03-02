@@ -1,4 +1,5 @@
-import {getAnswerFromQuestion} from "./openaihelper"
+import {getCodeFromQuestion} from "./openaihelper"
+
 
 function GenAi() {
 
@@ -8,8 +9,15 @@ function GenAi() {
   function callAi() {
     const input = document.querySelector('#gen-ai-input');
     console.log('We should make a call to the API with input ', input.value);
-    return getAnswerFromQuestion(input.value)
+
+    const existingStyle = document.querySelector('#upsell-styles').innerHTML
+    const question = "Here's the current style: " + existingStyle + "\n" + input.value
+    return getCodeFromQuestion(question)
+    .then(responseValue => {
+      document.getElementById('gen-ai-output').value=responseValue
+    })
   }
+
 
   /**
    * For the time being, include a manual update mechanism to test the style tag update
