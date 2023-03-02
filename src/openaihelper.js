@@ -3,33 +3,15 @@ const organizationId = "org-96dopwo0NE7xVygt5gBE0uKG" // Switch to your own one
 const secretKey = "" // Switch to your own one
 
 const url = "https://api.openai.com/v1/completions";
-const model = "text-davinci-003" //"text-davinci-002-render-sha"
-const max_tokens = 1000
-const temperature = 1 // from 0-2
-// const configuration = new Configuration({
-//     organization: organizationId,
-//     apiKey: process.env.OPENAI_API_KEY,
-// });
-// const openai = new OpenAIApi(configuration);
+const model = "text-davinci-003" // Can use getOpenAiModels to list avaliable modals
+const max_tokens = 800 // The size limit for the response. Shorter is faster and cheaper but the code may be incomplete
+const temperature = 1 // from 0-2. closer to 0 is more deterministic; closer to 2 is more random
 
-// export const getOpenAiModels = async () =>  {
-//     const response = await openai.listEngines();
-//     return response
-// }
-
-// // Use node.JS library, not ready
-// export const getAnswerFromQuestionV2 = async (question) =>{
-//     const createAnswerRequest = {
-//         model: model, 
-//         question: question, //"Can you provide sample css code of red button?",
-//         temperature: temperature,
-//         max_tokens: max_tokens};
-//     const response = openai.createAnswer(createAnswerRequest)
-//     return response
-// }
-
+export const getCodeFromQuestion = async (question) =>{
+    return getAnswerFromQuestion(question).then(extractCode)
+}
 // make http request
-export const getAnswerFromQuestion = async (question) => {
+const getAnswerFromQuestion = async (question) => {
     const data = JSON.stringify({
         model: model,
         prompt: question,
@@ -37,7 +19,6 @@ export const getAnswerFromQuestion = async (question) => {
         max_tokens: max_tokens,
         stream:false
     })
-    // console.log(data)
 
     const headers = new Headers({
         'OpenAI-Organization': organizationId,
@@ -66,14 +47,11 @@ export const getAnswerFromQuestion = async (question) => {
               reader.read().then(({ done, value }) => {
                 // If there is no more data to read
                 if (done) {
-                //   console.log("done", done);
                   controller.close();
                   return;
                 }
                 // Get the data and send it to the browser via the controller
                 controller.enqueue(value);
-                // Check chunks by logging to the console
-                // console.log(done, value);
                 push();
               });
             }
@@ -88,22 +66,78 @@ export const getAnswerFromQuestion = async (question) => {
       .then((result) => {
         console.log(result);
         var answer;
-        if (result["choices"]) {
-            answer = result["choices"][0]["text"]
+        if (result.choices) {
+            answer = result.choices[0].text
             console.log("Answer: " + answer);
         } else {
-            answer = result["error"]["message"]
+            answer = result.error.message
         }  
         return answer
       });
 }
 
-export const getCodeFromQuestion = async (question) =>{
-    return getAnswerFromQuestion(question).then(extractCode)
+function extractCode(text) {
+    const indexOfStart =  text.indexOf('///')
+    const indexOfEnd =  text.indexOf('###')
+    
+    return text.substring(indexOfStart + 3, indexOfEnd)
 }
 
-function extractCode(text) {
-    const indexOfNewline =  text.indexOf('.')
-    console.log(indexOfNewline)
-    return text.substring(indexOfNewline)
+const configuration = new Configuration({
+    organization: organizationId,
+    apiKey: secretKey,
+});
+export const getOpenAiModels = async () =>  {
+    const openai = new OpenAIApi(configuration);
+    const response = openai.listEngines();
+    return response.then(res=>{
+        console.log(res.data)
+        return res.data
+    })
 }
+
+
+//////////// For experiment
+
+
+// Use node.JS library, not ready, has CORS issues
+const getAnswerFromQuestionV2 = async (question) =>{
+    const openai = new OpenAIApi(configuration);
+    const params = {
+        model: model, 
+        question: question, //"Can you provide sample css code of red button?",
+        temperature: temperature,
+        max_tokens: max_tokens};
+
+    return openai.createAnswer(params)
+        .then((response) => {
+            console.log(response.choices[0].text);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
+// Before using this, install the library by "npm i openai-api"
+const getAnswerFromQuestionV3 = async (question) => {
+    const OpenAI = require('openai-api');
+    const openai = new OpenAI(secretKey);
+    return openai.complete({
+        engine: model,
+        prompt: question,
+        maxTokens: max_tokens,
+        temperature: temperature,
+        stream: false
+        // topP: 1,
+        // presencePenalty: 0,
+        // frequencyPenalty: 0,
+        // bestOf: 1,
+        // n: 1,
+        // stop: ['\n', "testing"]
+    }).then(response => {
+        console.log(response.data);
+        return response.data.choices[0].text
+    })
+
+}
+
