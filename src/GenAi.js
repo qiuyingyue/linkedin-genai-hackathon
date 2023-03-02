@@ -2,11 +2,12 @@ import {getCodeFromQuestion} from "./openaihelper"
 
 
 function GenAi() {
-
   /**
    * Placeholder for the API call with the text input from a user
    */
   function callAi() {
+    let appContainerEl = document.querySelector('.App-container');
+    appContainerEl.classList.add('loading');
     const input = document.querySelector('#gen-ai-input');
     console.log('We should make a call to the API with input ', input.value);
 
@@ -15,7 +16,8 @@ function GenAi() {
     + " and send me the new code?"
     return getCodeFromQuestion(question)
     .then(responseValue => {
-      document.getElementById('gen-ai-output').value=responseValue
+      document.getElementById('gen-ai-output').value=responseValue;
+      appContainerEl.classList.remove('loading');
     })
   }
 
