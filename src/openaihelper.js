@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 const organizationId = "org-96dopwo0NE7xVygt5gBE0uKG" // Switch to your own one
-const secretKey = "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" // Switch to your own one
+const secretKey = "" // Switch to your own one
 
 const url = "https://api.openai.com/v1/completions";
 const model = "text-davinci-003" //"text-davinci-002-render-sha"
