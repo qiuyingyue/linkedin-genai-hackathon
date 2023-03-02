@@ -1,3 +1,5 @@
+import GenAi from './GenAi';
+
 function Options() {
   return (
     <div class="options">
@@ -8,7 +10,7 @@ function Options() {
         <li>Please update the <strong>buttons</strong> to be a <strong>darker</strong> color.</li>
         <li>Can you update the <strong>title</strong> to be <strong>larger</strong>?</li>
       </ul>
-      <input type="text" id="lname" name="lname"></input><button>Go!</button>
+      <GenAi/>
     </div>
   );
 }

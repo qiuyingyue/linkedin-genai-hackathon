@@ -1,6 +1,6 @@
 function UpsellStyles() {
   return (
-    <style>
+    <style id="upsell-styles">
       {
         `
         .container {
