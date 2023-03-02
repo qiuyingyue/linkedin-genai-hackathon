@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.upsell-markup-container {
+  display: flex;
+  flex-direction: column;
+  height: 667px;
+  width: 375px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #38434f;
+  border: solid 12px #000000bf;
+  border-radius: 12px;
+}
+
+.promo-bottom-sheet {
+  margin-top: auto;
+}
