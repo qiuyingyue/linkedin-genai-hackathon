@@ -40,11 +40,11 @@ function GenAi() {
   return (
     <div class="gen-ai">
       <div>
-        <input type="text" id="gen-ai-input" name="gen-ai-input"></input>
+        <textarea id="gen-ai-input" name="gen-ai-input" style={{height: "80px", width: "320px"}}></textarea>
         <button onClick={callAi}>Go!</button>
       </div>
       <div>
-        <input type="text" id="gen-ai-output" name="gen-ai-output"></input>
+        <textarea type="text" id="gen-ai-output" name="gen-ai-output" style={{height: "80px", width: "320px"}}></textarea>
         <button onClick={manuallyUpdateStyles}>Update CSS</button>
         </div>
     </div>
