@@ -17,7 +17,7 @@ export const getOpenAiModels = async () =>  {
     return response
 }
 
-// Use node.JS library, unfinished
+// Use node.JS library
 export const getAnswerFromQuestionV2 = async (question) =>{
     const createAnswerRequest = {
         model: model, 
@@ -43,7 +43,7 @@ export const getAnswerFromQuestion = async (question) => {
         max_tokens: max_tokens,
         stream:false
     })
-    console.log(data)
+    // console.log(data)
 
     const headers = new Headers({
         'OpenAI-Organization': organizationId,
@@ -92,18 +92,24 @@ export const getAnswerFromQuestion = async (question) => {
         new Response(stream, { headers: { "Content-Type": "application/json" } }).json()
       )
       .then((result) => {
-        const answer = result["choices"][0]["text"]
         console.log(result);
-        console.log("Answer: " + answer);
+        var answer;
+        if (result["choices"]) {
+            answer = result["choices"][0]["text"]
+            console.log("Answer: " + answer);
+        } else {
+            answer = result["error"]["message"]
+        }  
         return answer
       });
 }
 
 export const getCodeFromQuestion = async (question) =>{
-    getAnswerFromQuestion(question).then(extractCode)
+    return getAnswerFromQuestion(question).then(extractCode)
 }
 
 function extractCode(text) {
-    // Add formatting
-    return text
+    const indexOfNewline =  text.indexOf('.')
+    console.log(indexOfNewline)
+    return text.substring(indexOfNewline + 1)
 }
