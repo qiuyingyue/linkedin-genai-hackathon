@@ -16,7 +16,9 @@ function GenAi() {
     + ". Please send me the full new code enclosed between \"///\" and \"###\"?"
     return getCodeFromQuestion(question)
     .then(responseValue => {
-      document.getElementById('gen-ai-output').value=responseValue;
+      if (responseValue) {
+        updateStyles(responseValue);
+      }
       appContainerEl.classList.remove('loading');
     })
   }
@@ -47,10 +49,10 @@ function GenAi() {
         </div>
         <button onClick={callAi}>Go!</button>
       </div>
-      <div class="gen-ai-container">
+      {/* <div class="gen-ai-container">
         <textarea class="gen-ai-output" type="text" id="gen-ai-output" name="gen-ai-output" placeholder="Wait for your CSS to get populated here..."></textarea>
         <button onClick={manuallyUpdateStyles}>Update CSS</button>
-      </div>
+      </div> */}
     </div>
   );
 }
