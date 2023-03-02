@@ -3,9 +3,15 @@ import GenAi from './GenAi';
 function Options() {
   return (
     <div class="options">
+      <div>
+        <label>First, enter your Open AI <a href="https://platform.openai.com/account/api-keys">secret key</a>:</label>
+        <input class="secret-key-input" type="text" placeholder="Secret key" id="secret-key-input" name="secret-key-input"></input>
+      </div>
+      <div>
+        <label>And <a href="https://platform.openai.com/account/org-settings">organization ID:</a></label>
+        <input class="organization-id-input" type="text" placeholder="Organization ID" id="organization-id-input" name="organization-id-input"></input>
+      </div>
       <h3>Enter a prompt to update the UI</h3>
-      <label>First, enter your secret key from your <a href="https://platform.openai.com/account/api-keys">Open AI</a> account:</label>
-      <input class="secret-key-input" type="text" placeholder="Secret key" id="secret-key-input" name="secret-key-input"></input>
       <p><em>Start with something simple, like</em></p>
       <ul>
         <li>Can you update the <strong>title</strong> to be <strong>larger</strong>?</li>

@@ -24,6 +24,10 @@ const getAnswerFromQuestion = async (question) => {
     console.log('secret key is ', secretKeyEl.value);
     secretKey = secretKeyEl.value || secretKey;
 
+    const organizationIdEl = document.querySelector('#organization-id-input');
+    console.log('organization id is ', secretKeyEl.value);
+    secretKey = organizationIdEl.value || organizationId;
+
     const headers = new Headers({
         'OpenAI-Organization': organizationId,
         'Authorization': "Bearer " + secretKey,
