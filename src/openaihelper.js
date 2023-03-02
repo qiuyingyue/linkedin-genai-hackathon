@@ -73,22 +73,25 @@ const getAnswerFromQuestion = async (question) => {
       )
       .then((result) => {
         console.log(result);
-        var answer;
+        var answer = {};
         if (result.choices) {
-            answer = result.choices[0].text
+            answer["data"] = result.choices[0].text
             console.log("Answer: " + answer);
         } else {
-            answer = result.error.message
+            answer["error"] = result.error.message
         }  
         return answer
       });
 }
 
-function extractCode(text) {
-    const indexOfStart =  text.indexOf('///')
-    const indexOfEnd =  text.indexOf('###')
-    
-    return text.substring(indexOfStart + 3, indexOfEnd)
+function extractCode(answer) {
+    if (answer.data) {
+        var text = answer.data
+        const indexOfStart =  text.indexOf('///')
+        const indexOfEnd =  text.indexOf('###')
+        answer.data = text.substring(indexOfStart + 3, indexOfEnd)
+    }
+    return answer
 }
 
 const configuration = new Configuration({

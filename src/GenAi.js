@@ -14,10 +14,12 @@ function GenAi() {
     const existingStyle = document.querySelector('#upsell-styles').innerHTML
     const question = "Here's the code for the current style: " + existingStyle + "\n" + input.value
     + ". Please send me the full new code enclosed between \"///\" and \"###\"?"
-    return getCodeFromQuestion(question)
+    return getCodeFromQuestion(question, 800)
     .then(responseValue => {
-      if (responseValue) {
-        updateStyles(responseValue);
+      if (responseValue.data) {
+        updateStyles(responseValue.data);
+      } else {
+        window.alert("Error:" + responseValue.error)
       }
       appContainerEl.classList.remove('loading');
     });
@@ -35,10 +37,12 @@ function GenAi() {
     const existingMarkup = document.querySelector('.upsell-markup-container').innerHTML
     const question = "Here's the code for the current markup: " + existingMarkup + "\n" + input.value
     + ". Please send me the full new code enclosed between \"///\" and \"###\"?"
-    return getCodeFromQuestion(question)
+    return getCodeFromQuestion(question, 1500)
     .then(responseValue => {
-      if (responseValue) {
-        updateMarkup(responseValue);
+      if (responseValue.data) {
+        updateMarkup(responseValue.data);
+      } else {
+        window.alert("Error:" + responseValue.error)
       }
       appContainerEl.classList.remove('loading');
     });
