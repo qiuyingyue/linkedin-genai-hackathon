@@ -4,7 +4,7 @@ function UpsellMarkup() {
       <div class="promo-bottom-sheet">
         <div class="promo-bottom-sheet__card">
           <h3 class="promo-bottom-sheet__card-headline">
-            Custom headline title
+            LinkedIn is better on the app
           </h3>
             <div class="promo-bottom-sheet__card-action">
               <icon class="promo-bottom-sheet__card-icon">
@@ -16,7 +16,7 @@ function UpsellMarkup() {
               </icon>
               <span class="promo-bottom-sheet__card-text">LinkedIn App</span>
               <button class="promo-bottom-sheet__action">
-                Open
+                Open App
               </button>
             </div>
             <div class="promo-bottom-sheet__card-action">
@@ -27,7 +27,7 @@ function UpsellMarkup() {
               </icon>
               <span class="promo-bottom-sheet__card-text">Browser</span>
               <button class="promo-bottom-sheet__dismiss">
-                Close
+                Continue
               </button>
             </div>
         </div>
