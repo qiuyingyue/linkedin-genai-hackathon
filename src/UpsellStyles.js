@@ -23,12 +23,6 @@ function UpsellStyles() {
           color: #000000e6;
         }
   
-        .promo-bottom-sheet__card-action {
-          display: flex;
-          align-items: center;
-          margin-bottom: 20px;
-        }
-  
         .icon {
           display: inline-block; 
           margin-right: 16px; 
@@ -43,7 +37,7 @@ function UpsellStyles() {
           width: 20px;
         }
   
-        p {
+        .text {
           font-family: sans-serif;
           color: #000000e6;
           flex-grow: 1;
