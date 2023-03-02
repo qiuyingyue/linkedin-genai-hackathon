@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 const organizationId = "org-96dopwo0NE7xVygt5gBE0uKG" // Switch to your own one
-const secretKey = "" // Switch to your own one
+let secretKey = "" // Switch to your own one
 
 const url = "https://api.openai.com/v1/completions";
 const model = "text-davinci-003" // Can use getOpenAiModels to list avaliable modals
@@ -19,6 +19,10 @@ const getAnswerFromQuestion = async (question) => {
         max_tokens: max_tokens,
         stream:false
     })
+
+    const secretKeyEl = document.querySelector('#secret-key-input');
+    console.log('secret key is ', secretKeyEl.value);
+    secretKey = secretKeyEl.value || secretKey;
 
     const headers = new Headers({
         'OpenAI-Organization': organizationId,

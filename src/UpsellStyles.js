@@ -23,6 +23,17 @@ function UpsellStyles() {
           font-size: 16px;
           color: #000000e6;
         }
+
+        .subtitle {
+          display: none;
+          order: 2;
+          font-family: sans-serif;
+          font-weight: normal;
+          color: #000000e6;
+          text-align: center;
+          margin-top: 0;
+          margin-bottom: 24px;
+        }
   
         .icon {
           display: inline-block; 
@@ -69,7 +80,7 @@ function UpsellStyles() {
         }
 
         .open-app-button-container {
-          order: 2;
+          order: 3;
         }
 
         .open-app-button {
@@ -80,7 +91,7 @@ function UpsellStyles() {
         }
 
         .continue-app-button-container {
-          order: 3;
+          order: 4;
         }
   
         .continue-button {
