@@ -98,13 +98,9 @@
 }
 
 .options label {
-  display: block;
-  margin-bottom: 4px;
-}
-
-.secret-key-input {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  margin-right: 12px;
+  margin-bottom: 6px;
 }
 
 /* Gen AI */
