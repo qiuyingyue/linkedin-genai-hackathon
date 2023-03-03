@@ -21,6 +21,7 @@ function GenAi() {
     return getCodeFromQuestion(question)
     .then(responseValue => {
       if (responseValue.data) {
+        lastStyle = existingStyle;
         updateStyles(responseValue.data);
       } else {
         window.alert("Error:" + responseValue.error)
@@ -44,6 +45,7 @@ function GenAi() {
     return getCodeFromQuestion(question)
     .then(responseValue => {
       if (responseValue.data) {
+        lastMarkup = existingMarkup;
         updateMarkup(responseValue.data);
       } else {
         window.alert("Error:" + responseValue.error)
@@ -66,7 +68,6 @@ function GenAi() {
    */
   function updateStyles(newCss) {
     const styleTag = document.querySelector('#upsell-styles');
-    lastStyle = styleTag.innerHTML;
     styleTag.innerHTML = newCss;
   }
 
@@ -76,7 +77,6 @@ function GenAi() {
    */
   function updateMarkup(newHtml) {
     const styleTag = document.querySelector('.upsell-markup-container');
-    lastMarkup = styleTag.innerHTML;
     styleTag.innerHTML = newHtml;
   }
 
