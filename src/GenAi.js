@@ -1,7 +1,11 @@
 import {getCodeFromQuestion} from "./openaihelper"
+import UpsellMarkup from './UpsellMarkup';
+import UpsellStyles from './UpsellStyles';
 
 
 function GenAi() {
+  var lastStyle;
+  var lastMarkup;
   /**
    * Trigger API call with the text input from a user. Target CSS.
    */
@@ -62,6 +66,7 @@ function GenAi() {
    */
   function updateStyles(newCss) {
     const styleTag = document.querySelector('#upsell-styles');
+    lastStyle = styleTag.innerHTML;
     styleTag.innerHTML = newCss;
   }
 
@@ -71,7 +76,17 @@ function GenAi() {
    */
   function updateMarkup(newHtml) {
     const styleTag = document.querySelector('.upsell-markup-container');
+    lastMarkup = styleTag.innerHTML;
     styleTag.innerHTML = newHtml;
+  }
+
+  function revert() {
+    if (lastStyle) {
+      updateStyles(lastStyle);
+    } 
+    if (lastMarkup) {
+      updateMarkup(lastMarkup);
+    }
   }
 
   return (
@@ -88,6 +103,7 @@ function GenAi() {
         </div>
         <button onClick={callAiForHtml}>Go!</button>
       </div>
+      <button onClick={revert}>Revert changes</button>
       {/* <div class="gen-ai-container">
         <textarea class="gen-ai-output" type="text" id="gen-ai-output" name="gen-ai-output" placeholder="Wait for your CSS to get populated here..."></textarea>
         <button onClick={manuallyUpdateStyles}>Update CSS</button>
