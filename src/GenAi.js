@@ -14,7 +14,7 @@ function GenAi() {
     const existingStyle = document.querySelector('#upsell-styles').innerHTML
     const question = "Here's the code for the current style: " + existingStyle + "\n" + input.value
     + ". Please send me the full new code enclosed between \"///\" and \"###\"?"
-    return getCodeFromQuestion(question, 800)
+    return getCodeFromQuestion(question)
     .then(responseValue => {
       if (responseValue.data) {
         updateStyles(responseValue.data);
@@ -37,7 +37,7 @@ function GenAi() {
     const existingMarkup = document.querySelector('.upsell-markup-container').innerHTML
     const question = "Here's the code for the current markup: " + existingMarkup + "\n" + input.value
     + ". Please send me the full new code enclosed between \"///\" and \"###\"?"
-    return getCodeFromQuestion(question, 1500)
+    return getCodeFromQuestion(question)
     .then(responseValue => {
       if (responseValue.data) {
         updateMarkup(responseValue.data);

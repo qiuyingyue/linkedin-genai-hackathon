@@ -4,7 +4,7 @@ let secretKey = "" // Switch to your own one
 
 const url = "https://api.openai.com/v1/completions";
 const model = "text-davinci-003" // Can use getOpenAiModels to list avaliable modals
-const max_tokens = 800 // The size limit for the response. Shorter is faster and cheaper but the code may be incomplete
+const max_tokens = 1200 // The size limit for the response. Shorter is faster and cheaper but the code may be incomplete
 const temperature = 1 // from 0-2. closer to 0 is more deterministic; closer to 2 is more random
 
 export const getCodeFromQuestion = async (question) =>{
@@ -76,7 +76,7 @@ const getAnswerFromQuestion = async (question) => {
         var answer = {};
         if (result.choices) {
             answer["data"] = result.choices[0].text
-            console.log("Answer: " + answer);
+            console.log("Answer: " + answer.data);
         } else {
             answer["error"] = result.error.message
         }  
